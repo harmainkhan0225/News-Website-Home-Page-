@@ -1,0 +1,260 @@
+/* Basic Settings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f3f5;
+    color: #222;
+}
+
+/* Main Page Layout */
+.news-website {
+    min-height: 100vh;
+    display: grid;
+
+    grid-template-columns: 200px minmax(0, 1fr) 250px;
+    grid-template-rows: 80px 1fr 60px;
+
+    grid-template-areas:
+        "header header header"
+        "menu news trending"
+        "footer footer footer";
+
+    gap: 12px;
+    padding: 12px;
+}
+
+/* Header */
+.website-header {
+    grid-area: header;
+    background-color: #102a43;
+    color: white;
+
+    display: grid;
+    place-items: center;
+}
+
+.website-header h1 {
+    font-size: 30px;
+    letter-spacing: 3px;
+}
+
+/* Left Menu */
+.website-menu {
+    grid-area: menu;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.website-menu h2 {
+    margin-bottom: 20px;
+    color: #c62828;
+}
+
+.website-menu a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 12px 8px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.website-menu a:hover {
+    background-color: #102a43;
+    color: white;
+}
+
+/* Main News */
+.main-news {
+    grid-area: news;
+    min-width: 0;
+}
+
+.latest-title {
+    margin-bottom: 12px;
+    font-size: 26px;
+}
+
+/* Breaking News Strip */
+.breaking-news {
+    grid-column: 1 / -1;
+    background-color: #d71920;
+    color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+/* News Cards Grid */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+/* Featured News */
+.featured-news {
+    grid-column: span 2;
+    grid-row: span 2;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+.featured-news img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.featured-news h2 {
+    font-size: 25px;
+    margin: 12px 0;
+}
+
+.featured-news p {
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Small News Cards */
+.news-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    min-width: 0;
+}
+
+.news-card img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+}
+
+.news-card h3 {
+    font-size: 17px;
+    margin: 10px 0;
+}
+
+.news-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Trending Box */
+.trending-box {
+    grid-area: trending;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    align-self: start;
+}
+
+.trending-box h2 {
+    color: #c62828;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #c62828;
+    padding-bottom: 10px;
+}
+
+.trending-box ol {
+    padding-left: 22px;
+}
+
+.trending-box li {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    line-height: 1.5;
+}
+
+.trending-box a {
+    color: #333;
+    text-decoration: none;
+}
+
+.trending-box a:hover {
+    color: #c62828;
+}
+
+/* Footer */
+.website-footer {
+    grid-area: footer;
+    background-color: #102a43;
+    color: white;
+
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Phone Layout */
+@media (max-width: 700px) {
+
+    .news-website {
+        grid-template-columns: 1fr;
+        grid-template-rows: 80px auto 1fr auto 60px;
+
+        grid-template-areas:
+            "header"
+            "menu"
+            "news"
+            "trending"
+            "footer";
+    }
+
+    .website-menu {
+        padding: 12px;
+    }
+
+    .website-menu h2 {
+        margin-bottom: 8px;
+    }
+
+    .website-menu a {
+        display: inline-block;
+        padding: 8px;
+        margin: 3px;
+        border: 1px solid #ddd;
+    }
+
+    .featured-news {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .featured-news img {
+        height: 220px;
+    }
+
+    .featured-news h2 {
+        font-size: 21px;
+    }
+
+    .news-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .trending-box {
+        width: 100%;
+    }
+}
+
+/* Very Small Phones */
+@media (max-width: 380px) {
+    .featured-news {
+        grid-column: 1 / -1;
+        grid-row: auto;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+}
